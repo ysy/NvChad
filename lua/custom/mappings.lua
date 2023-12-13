@@ -15,9 +15,12 @@ M.telescope = {
   }
 }
 
+local wt_cmd = ":lua save_cursor = vim.fn.getpos(\".\")  vim.cmd([[%s/\\s\\+$//e]]) vim.fn.setpos(\".\", save_cursor)  vim.cmd([[noh]])<CR> :clear <CR>"
+
 M.custom = {
   n = {
     ["<leader>rl"] = { "<cmd>edit!<CR>", "reload file" },
+    ["<leader>wt"] = {wt_cmd, "trim trailing whitespaces" },
   }
 }
 
