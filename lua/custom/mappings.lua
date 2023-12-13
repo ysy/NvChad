@@ -21,7 +21,35 @@ M.custom = {
   n = {
     ["<leader>rl"] = { "<cmd>edit!<CR>", "reload file" },
     ["<leader>wt"] = {wt_cmd, "trim trailing whitespaces" },
-  }
+
+    -- disable arrow keys
+    ["<Down>"] = {"<Nop>", "arrow key disabled" },
+    ["<Up>"] = {"<Nop>", "arrow key disabled" },
+    ["<Left>"] = {"<Nop>", "arrow key disabled" },
+    ["<Right>"] = {"<Nop>", "arrow key disabled" },
+  },
+
+  i = {
+    -- disable arrow keys
+    ["<Down>"] = {"<Nop>", "arrow key disabled" },
+    ["<Up>"] = {"<Nop>", "arrow key disabled" },
+    ["<Left>"] = {"<Nop>", "arrow key disabled" },
+    ["<Right>"] = {"<Nop>", "arrow key disabled" },
+  },
+  v = {
+    -- disable arrow keys
+    ["<Down>"] = {"<Nop>", "arrow key disabled" },
+    ["<Up>"] = {"<Nop>", "arrow key disabled" },
+    ["<Left>"] = {"<Nop>", "arrow key disabled" },
+    ["<Right>"] = {"<Nop>", "arrow key disabled" },
+  },
+  x = {
+    -- disable arrow keys
+    ["<Down>"] = {"<Nop>", "arrow key disabled" },
+    ["<Up>"] = {"<Nop>", "arrow key disabled" },
+    ["<Left>"] = {"<Nop>", "arrow key disabled" },
+    ["<Right>"] = {"<Nop>", "arrow key disabled" },
+  },
 }
 
 return M
