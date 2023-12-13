@@ -64,6 +64,29 @@ local plugins =
         },
       },
     },
+
+    -- LSP Config
+    {
+      "neovim/nvim-lspconfig",
+       config = function()
+          require "plugins.configs.lspconfig"
+          require "custom.configs.lspconfig"
+       end,
+    },
+    -- LSP Config->mason
+    -- :MasonInstallAll
+    {
+    "williamboman/mason.nvim",
+        opts = {
+          ensure_installed = {
+            "lua-language-server",
+            "prettier",
+            "stylua",
+            "clangd",
+            "pyright",
+          },
+        },
+    }
 }
 
 return plugins
