@@ -1,5 +1,7 @@
 local plugins = 
 {
+
+  -- substitute
   {
     "gbprod/substitute.nvim",
     opts = {
@@ -8,22 +10,60 @@ local plugins =
         -- refer to the configuration section below
     },
 
+    --enabled = true,
     init = function ()
       require('core.mappings').substitute = {
         n = {
-          ['s'] = {require('substitute').operator, 'substitute motion,, replace text with yanked', opts = {noremap = true}}
+          ['<leader>s'] = {require('substitute').operator, 'substitute motion,, replace text with yanked', opts = {noremap = true}}
         },
         x = {
-          ['s'] = {require('substitute').visual, 'substitute motion,, replace text with yanked', opts = {noremap = true}}
+          ['<leader>s'] = {require('substitute').visual, 'substitute motion,, replace text with yanked', opts = {noremap = true}}
         }
       }
 
       require("core.utils").load_mappings('substitute')
     end,
+  },
 
-    config = function ()
+
+  -- Leap
+  {
+    "ggandor/leap.nvim",
+    -- enabled = false,
+    opts = {
+
+    },
+
+    init = function ()
+      require("leap").add_default_mappings()
     end
-  }
+  },
+
+  -- Syntax Highlight
+  {
+      "nvim-treesitter/nvim-treesitter",
+      opts = {
+        ensure_installed = {
+          -- defaults
+          "vim",
+          "lua",
+
+          -- web dev
+          -- "html",
+          -- "css",
+          -- "javascript",
+          -- "typescript",
+          -- "tsx",
+          "json",
+          -- "vue", "svelte",
+
+         -- low level
+          "c",
+          -- "zig"
+          "python",
+        },
+      },
+    },
 }
 
 return plugins
