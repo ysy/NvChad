@@ -1,5 +1,32 @@
-local plugins = 
+local plugins =
 {
+  --Disable nvterm, instead use toggleterm
+  {
+    "NvChad/nvterm",
+     enabled = false
+  },
+  -- Toggle term
+  {
+    'akinsho/toggleterm.nvim', version = "*",
+
+    init = function ()
+        local is_windows = vim.fn.has("win32") == 1
+        local opts = {
+            open_mapping = "<C-\\>",
+            start_in_insert = true,
+            direction = 'float',
+        }
+
+        if is_windows then
+            if vim.fn.executable('C:\\msys64\\msys2_shell.cmd') then
+                opts.shell = "C:\\msys64\\msys2_shell.cmd -defterm -here -no-start -use-full-path -ucrt64"
+            else
+                vim.notify("Warning: MSYS64 not installed, please install it in C:\\msys64")
+            end
+        end
+        require("toggleterm").setup(opts)
+    end
+  },
 
   -- substitute
   {
