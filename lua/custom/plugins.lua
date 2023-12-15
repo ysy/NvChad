@@ -5,6 +5,8 @@ local plugins =
     "NvChad/nvterm",
      enabled = false
   },
+
+
   -- Toggle term
   {
     'akinsho/toggleterm.nvim', version = "*",
@@ -41,10 +43,10 @@ local plugins =
     init = function ()
       require('core.mappings').substitute = {
         n = {
-          ['<leader>s'] = {require('substitute').operator, 'substitute motion,, replace text with yanked', opts = {noremap = true}}
+          ['gs'] = {require('substitute').operator, 'substitute motion,, replace text with yanked', opts = {noremap = true}}
         },
         x = {
-          ['<leader>s'] = {require('substitute').visual, 'substitute motion,, replace text with yanked', opts = {noremap = true}}
+          ['gs'] = {require('substitute').visual, 'substitute motion,, replace text with yanked', opts = {noremap = true}}
         }
       }
 
