@@ -21,6 +21,7 @@ M.telescope = {
     ["<leader>fs"] = {"<cmd>Telescope grep_string<CR>", "Find string under cursor in cwd"},
     ["<leader>ws"] = {"<cmd>Telescope lsp_workspace_symbols<CR>", "Find symbol in worksapce"},
     ["<leader>ds"] = {"<cmd>Telescope lsp_document_symbols<CR>", "Find symbol in document"},
+    ["<leader>rs"] = {"<cmd>Telescope session-lens search_session<CR>", "Find sessions"},
   }
 }
 
