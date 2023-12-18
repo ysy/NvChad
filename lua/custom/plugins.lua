@@ -142,6 +142,12 @@ local plugins =
           return require "custom.configs.null-ls"
         end,
     },
+
+    --Dressing to cusotmize vim.input vim.select
+    {
+      "stevearc/dressing.nvim",
+      event = "VeryLazy",
+    }
 }
 
 return plugins
