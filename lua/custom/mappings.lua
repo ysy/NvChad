@@ -50,6 +50,7 @@ M.custom = {
 
   i = {
     -- disable arrow keys
+    ["jk"] = { "<ESC>", "Exit insert mode with jk" },
     ["<Down>"] = {"<Nop>", "arrow key disabled" },
     ["<Up>"] = {"<Nop>", "arrow key disabled" },
     ["<Left>"] = {"<Nop>", "arrow key disabled" },
