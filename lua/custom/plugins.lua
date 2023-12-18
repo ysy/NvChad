@@ -71,17 +71,17 @@ local plugins =
   -- Hop
   {
     "smoka7/hop.nvim",
-    event = {"BufReadPre", "BufNewFile"},
     version = "*",
     opts = {keys = 'etovxqpdygfblzhckisuran', term_seq_bias = 0.5},
     -- lazy = false,
     init = function ()
-      require('core.mappings').substitute = {
+      require('core.mappings').hop = {
         n = {
           ['gs'] = {"<cmd>HopChar2<CR>", 'HopChar2', opts = {noremap = true}}
         },
       }
-    end
+    end,
+    lazy = false
   },
     -- Syntax Highlight
   {
