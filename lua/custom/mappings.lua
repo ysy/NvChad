@@ -32,6 +32,9 @@ M.custom = {
     ["<leader>rl"] = { "<cmd>edit!<CR>", "reload file" },
     ["<leader>wt"] = {wt_cmd, "trim trailing whitespaces" },
 
+    ['<C-j>'] = {"<C-d>", opts = {noremap = true}},
+    ['<C-k>'] = {"<C-u>", opts = {noremap = true}},
+
     -- disable arrow keys
     ["<Down>"] = {"<Nop>", "arrow key disabled" },
     ["<Up>"] = {"<Nop>", "arrow key disabled" },
