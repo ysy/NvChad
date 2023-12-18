@@ -19,6 +19,8 @@ M.telescope = {
     ["<leader><leader>"] = { "<cmd> Telescope find_files <CR>", "Find files" },
     ["<C-p>"] = { "<cmd> Telescope find_files <CR>", "Find files" },
     ["<leader>fs"] = {"<cmd>Telescope grep_string<CR>", "Find string under cursor in cwd"},
+    ["<leader>ws"] = {"<cmd>Telescope lsp_workspace_symbols<CR>", "Find symbol in worksapce"},
+    ["<leader>ds"] = {"<cmd>Telescope lsp_document_symbols<CR>", "Find symbol in document"},
   }
 }
 
