@@ -170,6 +170,10 @@ local plugins =
           config = function()
             require('session-lens').setup({--[[your custom config--]]})
           end
+    },
+    {
+        'ThePrimeagen/vim-be-good',
+        lazy = false
     }
 }
 
