@@ -8,6 +8,12 @@ M = {}
 -- }
 --
 
+M.disabled = {
+    n = {
+        ["<leader>n"] = "",
+    }
+}
+
 M.telescope = {
   n = {
     ["<leader><leader>"] = { "<cmd> Telescope find_files <CR>", "Find files" },
@@ -31,7 +37,7 @@ M.custom = {
   n = {
     ["<leader>rl"] = { "<cmd>edit!<CR>", "reload file" },
     ["<leader>wt"] = {wt_cmd, "trim trailing whitespaces" },
-
+    ["<leader>nh"] = { "<cmd>nohl<CR>", "Clear search hightlights" },
     ['<C-j>'] = {"<C-d>", opts = {noremap = true}},
     ['<C-k>'] = {"<C-u>", opts = {noremap = true}},
 
