@@ -24,7 +24,7 @@ local plugins =
                 opts.shell = "C:\\msys64\\msys2_shell.cmd -defterm -here -no-start -use-full-path -ucrt64"
             else
                 vim.notify("Warning: MSYS64 not installed, please install it in C:\\msys64")
-            end
+           end
         end
         require("toggleterm").setup(opts)
     end
@@ -43,10 +43,10 @@ local plugins =
     init = function ()
       require('core.mappings').substitute = {
         n = {
-          ['gs'] = {require('substitute').operator, 'substitute motion,, replace text with yanked', opts = {noremap = true}}
+          ['s'] = {require('substitute').operator, 'substitute motion,, replace text with yanked', opts = {noremap = true}}
         },
         x = {
-          ['gs'] = {require('substitute').visual, 'substitute motion,, replace text with yanked', opts = {noremap = true}}
+          ['s'] = {require('substitute').visual, 'substitute motion,, replace text with yanked', opts = {noremap = true}}
         }
       }
 
@@ -58,7 +58,7 @@ local plugins =
   -- Leap
   {
     "ggandor/leap.nvim",
-    -- enabled = false,
+    enabled = false,
     opts = {
 
     },
@@ -68,7 +68,22 @@ local plugins =
     end
   },
 
-  -- Syntax Highlight
+  -- Hop
+  {
+    "smoka7/hop.nvim",
+    event = {"BufReadPre", "BufNewFile"},
+    version = "*",
+    opts = {keys = 'etovxqpdygfblzhckisuran', term_seq_bias = 0.5},
+    -- lazy = false,
+    init = function ()
+      require('core.mappings').substitute = {
+        n = {
+          ['gs'] = {"<cmd>HopChar2<CR>", 'HopChar2', opts = {noremap = true}}
+        },
+      }
+    end
+  },
+    -- Syntax Highlight
   {
       "nvim-treesitter/nvim-treesitter",
       opts = {
