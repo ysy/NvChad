@@ -15,6 +15,15 @@ M.telescope = {
   }
 }
 
+M.lspconfig = {
+    n = {
+        ["gr"] = {
+          "<cmd>Telescope lsp_references<cr>",
+          "LSP references",
+        }
+    },
+}
+
 local wt_cmd = ":lua save_cursor = vim.fn.getpos(\".\")  vim.cmd([[%s/\\s\\+$//e]]) vim.fn.setpos(\".\", save_cursor)  vim.cmd([[noh]])<CR> :clear <CR>"
 
 M.custom = {
