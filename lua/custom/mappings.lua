@@ -12,6 +12,7 @@ M.telescope = {
   n = {
     ["<leader><leader>"] = { "<cmd> Telescope find_files <CR>", "Find files" },
     ["<C-p>"] = { "<cmd> Telescope find_files <CR>", "Find files" },
+    ["<leader>fs"] = {"<cmd>Telescope grep_string<CR>", "Find string under cursor in cwd"},
   }
 }
 
