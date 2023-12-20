@@ -36,14 +36,42 @@ M.lspconfig = {
 
 local wt_cmd = ":lua save_cursor = vim.fn.getpos(\".\")  vim.cmd([[%s/\\s\\+$//e]]) vim.fn.setpos(\".\", save_cursor)  vim.cmd([[noh]])<CR> :clear <CR>"
 
+ _BUILD_YSY_ = function ()
+    local path = "./build.bat"
+    local ok, err = vim.loop.fs_stat(path)
+    if not ok then
+        path = "./tools/build.bat"
+        local ok, err = vim.loop.fs_stat(path)
+        if not ok then
+            print("build.bat does not exists")
+        end
+    end
+    vim.cmd('1TermExec cmd="'.. path .. '"')
+end
+
+_FLASH_YSY_ = function ()
+    local path = "./flash.bat"
+    local ok, err = vim.loop.fs_stat(path)
+    if not ok then
+        path = "./tools/flash.bat"
+        local ok, err = vim.loop.fs_stat(path)
+        if not ok then
+            print("flash.bat does not exists")
+        end
+    end
+    vim.cmd('1TermExec cmd="'.. path .. '"')
+end
+
 M.custom = {
   n = {
     ["<leader>rl"] = { "<cmd>edit!<CR>", "reload file" },
     ["<leader>wt"] = {wt_cmd, "trim trailing whitespaces" },
     ["<leader>nh"] = { "<cmd>nohl<CR>", "Clear search hightlights" },
-    ['<C-j>'] = {"<C-d>", opts = {noremap = true}},
-    ['<C-k>'] = {"<C-u>", opts = {noremap = true}},
-
+    -- ['<C-j>'] = {"<C-d>", opts = {noremap = true}},
+    -- ['<C-k>'] = {"<C-u>", opts = {noremap = true}},
+    ["<leader>tb"] = {"<cmd>lua _BUILD_YSY_()<CR>", "Build project"},
+    ["<leader>tf"] = {"<cmd>lua _FLASH_YSY_()<CR>", "Flash project"},
+    ["<leader>ts"] = {"<cmd>2ToggleTerm<CR>", "Show serial monitor terminal"},
     -- disable arrow keys
     ["<Down>"] = {"<Nop>", "arrow key disabled" },
     ["<Up>"] = {"<Nop>", "arrow key disabled" },

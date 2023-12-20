@@ -43,10 +43,10 @@ local plugins =
     init = function ()
       require('core.mappings').substitute = {
         n = {
-          ['s'] = {require('substitute').operator, 'substitute motion,, replace text with yanked', opts = {noremap = true}}
+          ['s'] = {require('substitute').operator, 'substitute motion, replace text with yanked', opts = {noremap = true}}
         },
         x = {
-          ['s'] = {require('substitute').visual, 'substitute motion,, replace text with yanked', opts = {noremap = true}}
+          ['s'] = {require('substitute').visual, 'substitute motion, replace text with yanked', opts = {noremap = true}}
         }
       }
 
@@ -156,7 +156,7 @@ local plugins =
 
             auto_session.setup({
               -- auto_restore_enabled = false,
-              auto_session_suppress_dirs = { "~/", "~/Dev/", "~/Downloads", "~/Documents", "~/Desktop/" },
+              auto_session_suppress_dirs = { "~/", "~/Dev/", "~/Downloads", "~/Documents", "~/Desktop/", "~/" },
             })
 
             -- local keymap = vim.keymap
@@ -173,7 +173,47 @@ local plugins =
     },
     {
         'ThePrimeagen/vim-be-good',
-        lazy = false
+        lazy = false,
+        enabled = false
+    },
+    {
+        "GustavoKatel/tasks.nvim",
+        dependencies = {"nvim-lua/plenary.nvim"},
+        enabled = false,
+        lazy = false,
+        init = function ()
+            local tasks = require("tasks")
+
+            -- local source_npm = require("tasks.sources.npm")
+            local source_tasksjson = require("tasks.sources.tasksjson")
+
+            local builtin = require("tasks.sources.builtin")
+
+            require("telescope").load_extension("tasks")
+
+            tasks.setup({
+                sources = {
+                    -- npm = source_npm,
+                    vscode = source_tasksjson,
+                    utils = builtin.new_builtin_source({
+                        -- sleep = {
+                        --     fn = function(ctx)
+                        --         local pasync = require("plenary.async")
+                        --
+                        --         pasync.util.sleep(10000)
+                        --     end,
+                        -- },
+                        vim_cmd = {
+                            vcmd = "echo 'ok'"
+                        },
+
+                        shell_cmd = {
+                            cmd = "make test"
+                        }
+                    }),
+                },
+            })
+        end,
     }
 }
 
