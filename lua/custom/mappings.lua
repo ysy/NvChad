@@ -36,28 +36,42 @@ M.lspconfig = {
 
 local wt_cmd = ":lua save_cursor = vim.fn.getpos(\".\")  vim.cmd([[%s/\\s\\+$//e]]) vim.fn.setpos(\".\", save_cursor)  vim.cmd([[noh]])<CR> :clear <CR>"
 
+local function get_batch_file(name)
+    local paths = {"./", "./tools/", "./dusun/tools/"}
+
+    for i=1, #paths do
+       local path = paths[i] .. name
+       local ok, _ = vim.loop.fs_stat(path)
+       if ok then
+            return path
+       end
+    end
+    return nil
+end
+    
  _BUILD_YSY_ = function ()
-    local path = "./build.bat"
-    local ok, err = vim.loop.fs_stat(path)
-    if not ok then
-        path = "./tools/build.bat"
-        local ok, err = vim.loop.fs_stat(path)
-        if not ok then
-            print("build.bat does not exists")
-        end
+    -- local path = "./build.bat"
+    -- local ok, err = vim.loop.fs_stat(path)
+    -- if not ok then
+    --     path = "./tools/build.bat"
+    --     local ok, err = vim.loop.fs_stat(path)
+    --     if not ok then
+    --         print("build.bat does not exists")
+    --     end
+    -- end
+    local path = get_batch_file("build.bat")
+    if path == nil then
+        print("build.bat does not exists")
+        return
     end
     vim.cmd('1TermExec cmd="'.. path .. '"')
 end
 
 _FLASH_YSY_ = function ()
-    local path = "./flash.bat"
-    local ok, err = vim.loop.fs_stat(path)
-    if not ok then
-        path = "./tools/flash.bat"
-        local ok, err = vim.loop.fs_stat(path)
-        if not ok then
-            print("flash.bat does not exists")
-        end
+    local path = get_batch_file("flash.bat")
+    if path == nil then
+        print("flash.bat does not exists")
+        return
     end
     vim.cmd('1TermExec cmd="'.. path .. '"')
 end
@@ -72,6 +86,7 @@ M.custom = {
     ["<leader>tb"] = {"<cmd>lua _BUILD_YSY_()<CR>", "Build project"},
     ["<leader>tf"] = {"<cmd>lua _FLASH_YSY_()<CR>", "Flash project"},
     ["<leader>ts"] = {"<cmd>2ToggleTerm<CR>", "Show serial monitor terminal"},
+    ["<leader>gg"] = {"<cmd>LazyGit<CR>", "Show LazyGit"},
     -- disable arrow keys
     ["<Down>"] = {"<Nop>", "arrow key disabled" },
     ["<Up>"] = {"<Nop>", "arrow key disabled" },

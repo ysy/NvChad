@@ -6,7 +6,6 @@ local plugins =
      enabled = false
   },
 
-
   -- Toggle term
   {
     'akinsho/toggleterm.nvim', version = "*",
@@ -62,7 +61,6 @@ local plugins =
     opts = {
 
     },
-
     init = function ()
       require("leap").add_default_mappings()
     end
@@ -72,7 +70,8 @@ local plugins =
   {
     "smoka7/hop.nvim",
     version = "*",
-    opts = {keys = 'etovxqpdygfblzhckisuran', term_seq_bias = 0.5},
+    event = "VeryLazy",
+    -- opts = {keys = 'etovxqpdygfblzhckisuran', term_seq_bias = 0.5},
     -- lazy = false,
     init = function ()
       require('core.mappings').hop = {
@@ -81,7 +80,10 @@ local plugins =
         },
       }
     end,
-    lazy = false
+    -- lazy = false
+    config = function ()
+       require("hop").setup({keys = 'etovxqpdygfblzhckisuran', term_seq_bias = 0.5})
+    end
   },
     -- Syntax Highlight
   {
@@ -91,7 +93,6 @@ local plugins =
           -- defaults
           "vim",
           "lua",
-
           -- web dev
           -- "html",
           -- "css",
@@ -100,7 +101,6 @@ local plugins =
           -- "tsx",
           "json",
           -- "vue", "svelte",
-
          -- low level
           "c",
           -- "zig"
@@ -214,7 +214,20 @@ local plugins =
                 },
             })
         end,
-    }
+    },
+    {
+        "kdheepak/lazygit.nvim",
+        -- optional for floating window border decoration
+        event = 'VeryLazy',
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+            "nvim-lua/plenary.nvim"
+        },
+
+        config = function ()
+            require("telescope").load_extension("lazygit")
+        end
+    },
 }
 
 return plugins
