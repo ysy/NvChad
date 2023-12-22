@@ -48,17 +48,8 @@ local function get_batch_file(name)
     end
     return nil
 end
-    
+
  _BUILD_YSY_ = function ()
-    -- local path = "./build.bat"
-    -- local ok, err = vim.loop.fs_stat(path)
-    -- if not ok then
-    --     path = "./tools/build.bat"
-    --     local ok, err = vim.loop.fs_stat(path)
-    --     if not ok then
-    --         print("build.bat does not exists")
-    --     end
-    -- end
     local path = get_batch_file("build.bat")
     if path == nil then
         print("build.bat does not exists")
@@ -75,6 +66,7 @@ _FLASH_YSY_ = function ()
     end
     vim.cmd('1TermExec cmd="'.. path .. '"')
 end
+
 
 M.custom = {
   n = {
@@ -96,7 +88,7 @@ M.custom = {
 
   i = {
     -- disable arrow keys
-    ["jk"] = { "<ESC>", "Exit insert mode with jk" },
+    -- ["jk"] = { "<ESC>", "Exit insert mode with jk" },
     ["<Down>"] = {"<Nop>", "arrow key disabled" },
     ["<Up>"] = {"<Nop>", "arrow key disabled" },
     ["<Left>"] = {"<Nop>", "arrow key disabled" },
