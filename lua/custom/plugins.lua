@@ -228,6 +228,17 @@ local plugins =
             require("telescope").load_extension("lazygit")
         end
     },
+
+    -- Hardtime
+    {
+       "m4xshen/hardtime.nvim",
+       dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+       opts = {},
+        lazy = false,
+        config = function ()
+            require("hardtime").setup()
+        end
+    },
 }
 
 return plugins
